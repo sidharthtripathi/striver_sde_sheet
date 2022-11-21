@@ -13,6 +13,23 @@ int max_sub(int* a, int n){
 	}
 	return max_ans;
 }
+
+int max_sub(int* a, int n){
+int curr_max = INT_MIN;
+int best = INT_MIN;
+for(int i = 0 ;i<n ;i++){
+	if(a[i]>a[i]+curr_max){
+		curr_max = a[i];
+	}
+	else{
+		curr_max = a[i] + curr_max;
+	}
+	if(curr_max>best)
+		best = curr_max;
+}
+return best;
+}
+
 int main(){
 	
 int n; cin>>n;
