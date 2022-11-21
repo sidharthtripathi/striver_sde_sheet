@@ -22,9 +22,6 @@ void sort(int* a, int n){
 	}
 }
 
-//method 2 is count number of repetition for each element ( time complexity will be o(n²) ) and as the count
-// for any element goes above n/2 return that element
-
 
 
 int main(){
