@@ -1,45 +1,47 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 
 using namespace std;
 
-const int R = 4, C = 4;
-
-void printSpiral(int mat[4][4], int R, int C) {
-  int top = 0, left = 0, bottom = R - 1, right = C - 1;
-
-  while (top <= bottom && left <= right) {
-    for (int i = left; i <= right; i++)
-      cout << mat[top][i] << " ";
-
-    top++;
-
-    for (int i = top; i <= bottom; i++)
-      cout << mat[i][right] << " ";
-
-    right--;
-
-    if (top <= bottom) {
-      for (int i = right; i >= left; i--)
-        cout << mat[bottom][i] << " ";
-
-      bottom--;
-    }
-
-    if (left <= right) {
-      for (int i = bottom; i >= top; i--)
-        cout << mat[i][left] << " ";
-
-      left++;
-    }
-  }
-}
-
 int main() {
-  int arr[R][C] = {{1, 2, 3, 4},
-                   {5, 6, 7, 8},
-	           {9, 10, 11, 12},
-		   {13, 14, 15, 16}};
-  printSpiral(arr, R, C);
+int n,m; cin>>n>>m;
+int a[n][m];
+for(int i = 0 ; i<n; i++)
+	for(int j = 0; j<m ; j++)
+		cin>>a[i][j];
 
-  return 0;
+// printing in spiral
+	int counter = 0;
+	int min_r = 0, min_c = 0 , max_r = n-1 , max_c = m-1;
+	while(counter<n*m){
+		//printing top wall
+		for(int i = min_r , j = min_c ; j<=max_c and counter<n*m; j++){
+			cout<<a[i][j]<<" ";
+			counter++;
+		}
+		min_r++;
+
+		//printing right wall
+		for(int i = min_r , j=max_c ; i<=max_r and counter<n*m ; i++){
+			cout<<a[i][j]<<" ";
+			counter++;
+		}
+		max_c--;
+		//printing bottom wall
+		for(int i = max_r , j = max_c ; j>=min_c and counter<n*m ; j--){
+			cout<<a[i][j]<<" ";
+			counter++;
+		}
+		max_r--;
+		//printing left wall
+		for(int i = max_r , j=min_c ; i>=min_r and counter<n*m ; i--){
+			cout<<a[i][j]<<" ";
+			counter++;
+		}
+		min_c++;
+	}
+
+
+
+
+
 }
