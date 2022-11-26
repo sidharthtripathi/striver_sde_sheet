@@ -25,3 +25,36 @@ int main(){
 	}
 	cout<<largest_sub_zero(a,n);
 }
+
+// optimal approach using maps
+
+#include <bits/stdc++.h>
+using namespace std;
+int largest_sub(int* a , int n){
+	int max = 0,sum = 0;
+	map <int , int > values;
+	for(int i = 0 ; i<n ; i++){
+		sum = sum + a[i];
+		if(values.find(sum)==values.end()){
+			values[sum] = i;
+		}
+		else{
+			if(i-(values.find(sum))->second > max)
+				max = i-(values.find(sum))->second;
+			//max = max(max,i-(values.find(sum))->second);
+		}
+
+	}
+	return max;
+
+}
+
+int main(){
+
+	int n; cin>>n;
+	int* a = new int[n];
+	for(int i = 0 ; i<n; i++)
+		cin>>a[i];
+	cout<<largest_sub(a,n);
+
+}
