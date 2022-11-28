@@ -25,3 +25,19 @@ int main(){
 
 
 }
+
+////////////////////////////////////
+// using different approach //
+void miss_rep(int* a , int n){
+int Y = (n*(n+1))/2;
+int Y2 = n*(n+1)*(2*n+1)/6;
+int X = 0,X2 = 0;
+for(int i = 0 ; i<n ;i++){
+X = X + a[i];
+X2 = X2 + a[i]*a[i];
+}
+int val1 = ((X - Y) + ((X2 - Y2)/(X-Y)))/2;
+int val2 = val1 - (X-Y);
+cout<<"repeating: "<<val1<<endl<<"missing: "<<val2;
+
+}
