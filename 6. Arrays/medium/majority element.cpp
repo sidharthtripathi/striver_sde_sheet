@@ -50,6 +50,6 @@ for(int i = 0 ; i<n ; i++){
 	cin>>temp;
 	ques.push_back(temp);
 }
-	cout<<majority_ele(ques);
+	cout<<voting_algo(ques);
 
 }
