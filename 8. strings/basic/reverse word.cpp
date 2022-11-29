@@ -21,3 +21,23 @@ public:
         
     }
 };
+
+/// without recursion
+string rev_words(string s){
+string ans;
+int i = s.length()-1;
+while(i>=0){
+	while(i>=0 and s[i]==' '){
+		i--;
+	}
+	int j = i;
+	while(i>=0 and s[i]!=' '){
+		i--;
+	}
+	ans = ans + s.substr(i+1,j-i) + " ";
+
+}
+return ans;
+
+
+}
