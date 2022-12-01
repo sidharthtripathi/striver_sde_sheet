@@ -1,19 +1,35 @@
 
 #include <iostream>
 using namespace std;
-int max_con_ones(int* a , int n){
-	int counter = 0,max_count = 0;
-for(int i = 0 ; i<n ; i++){
-	if(a[i]==1){
-		counter++;
-		if(counter>max_count)
-			max_count = counter;
+int max_sub(int* a , int n , int target){
+int maxi = 0, s = 0;
+int sum = 0;
+for(int j = 0 ; j<n and s<n ; j++){
+	sum = sum + a[j];
+	if(sum == target){
+		maxi = max(maxi,j-s+1);
 	}
-	else
-		counter = 0;
+	else if(sum>target){
+		sum = sum - a[s];
+		s++;
+	}
 }
-return max_count;
+return maxi;
 }
+
+int max_sub2(int* a , int n , int target){
+	int maxi = 0;
+for(int i = 0 ; i<n ; i++){
+	int sum = 0;
+	for(int j = i ; j<n ; j++){
+		sum = sum + a[j];
+		if(sum == target){
+			maxi = max(maxi , j-i+1);
+		}
+	}
+}
+}
+
 int main(){
  int n; cin>>n;
  int* a = new int[n];
